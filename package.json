@@ -1,0 +1,25 @@
+{
+  "name": "expressjs_tutorial",
+  "version": "1.0.0",
+  "description": "Welcome to the introduction session in our **Express.js tutorial series**. This lesson introduces Express, explains why it's useful, and walks you through setting up your first Express server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmabdulkareem/ExpressJS_Tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/cmabdulkareem/ExpressJS_Tutorial/issues"
+  },
+  "homepage": "https://github.com/cmabdulkareem/ExpressJS_Tutorial#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
