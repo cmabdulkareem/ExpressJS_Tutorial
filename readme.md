@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     - `req` : the request object, it contains information about the incoming request, such as the URL, headers, and body.
     - `res` : the response object, it contains methods for sending the response, such as `send`, `json`, and `status`.
 
-### 🔍 How to use?
+## 🔍 How to use?
 
 ## Get a home page
 ```js
