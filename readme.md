@@ -1,0 +1,79 @@
+# 🧠 Express.js Tutorial – Introduction
+
+Welcome to the introduction session in our **Express.js tutorial series**. This lesson introduces Express, explains why it's useful, and walks you through setting up your first Express server.
+
+---
+
+## 🚀 What is Express?
+
+**Express.js** is a fast, unopinionated, and minimalist web framework for **Node.js**. It simplifies the process of building robust APIs and web servers.
+
+### 🔍 Why Use Express?
+
+- Easy to learn and use
+- Handles HTTP requests and responses
+- Built on top of Node.js
+- Supports middleware for clean, modular code
+
+---
+
+## 🧰 Prerequisites
+
+Before you begin, make sure you have:
+
+- [Node.js](https://nodejs.org/) installed (v14+)
+- A code editor like [VS Code](https://code.visualstudio.com/)
+- Basic to intermediate level knowledge of JavaScript
+- es6 knowledge will be an added advantage
+
+---
+
+## 📦 Step 1: Initialize the Project with a start script
+
+1. Create a project folder and open it in your code editor (VS Code).
+2. command `npm init -y` to initialize the project with package.json.
+    2.1 we can also use `npm init` for interactive mode where you can answer questions about your project.
+    2.2 `npm init -y` is a shortcut for `npm init --yes` where you can skip the interactive mode.
+3. Configure the `package.json` file:
+    - Add `"type": "module"` to the `package.json` object. (for ES6)
+    - Add a script to start the server:
+        ```json
+        "scripts": {
+            "start": "nodemon index.js"     // where index.js is your server file
+        }
+        ```
+
+## 📦 Step 2: Install Express
+
+1. Install Express using `npm install express` or `npm i express`
+
+## 📦 Step 3: Create a Server File
+
+1. Create a file called `index.js` in the root directory of your project.
+2. Add the following code to the `index.js` file:
+    ```
+    import express from 'express';
+    const app = express();
+
+    app.get('/', (req, res) => {
+        res.send('Hello World!');
+    });
+
+    app.listen(3000, () => {
+        console.log('Server started on port 3000');
+    })
+    ```
+    - The `import express from 'express';` statement imports the Express module and assigns it to the `express` variable.
+    - The `const app = express();` statement creates an instance of the Express application and assigns it to the `app` variable.
+    - The `app.get('/', (req, res) => {...}` statement defines a route for the root URL ('/'). When a request is made to the root URL, the callback function is executed.
+    - The `res.send('Hello World!');` statement sends a response with the text 'Hello World!' to the client.
+    - The `app.listen(3000, () => {...}` statement starts the server on port 3000 and logs a message to the console when the server starts.
+
+3. Run the server using `npm run start` // it came from `package.json`
+    - Open your browser and navigate to `http://localhost:3000`
+    - You should see the message 'Hello World!' in the browser.
+    - We can also install vscode RESTClient extension and use it to test our API.
+    - After installing the extension, create a request file `request.http` and use it to test our API.
+        ```
+        GET http://localhost:3000
+        ```
