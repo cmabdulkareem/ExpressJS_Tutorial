@@ -1,7 +1,7 @@
-GET http://localhost:3000/
+GET http://localhost:3000/admin/
 
 ###
-GET http://localhost:3000/about
+GET http://localhost:3000/admin/about
 
 ###
-GET http://localhost:3000/contact
+GET http://localhost:3000/admin/contact
