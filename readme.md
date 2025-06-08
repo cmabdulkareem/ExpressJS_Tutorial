@@ -69,7 +69,10 @@ Before you begin, make sure you have:
     - The `res.send('Hello World!');` statement sends a response with the text 'Hello World!' to the client.
     - The `app.listen(3000, () => {...}` statement starts the server on port 3000 and logs a message to the console when the server starts.
 
-3. Run the server using `npm run start` // it came from `package.json`
+## 📦 Step 4: Test the created server
+
+1. Run the server using `npm run start` // it came from `package.json`
+2. Test the server by:
     - Open your browser and navigate to `http://localhost:3000`
     - You should see the message 'Hello World!' in the browser.
     - We can also install vscode RESTClient extension and use it to test our API.
