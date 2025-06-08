@@ -1,4 +1,4 @@
-# Lesson 01 - 
+# Lesson 01 - Route Handlers
 
 Welcome to the Lesson 01 session in our **Express.js tutorial series**. This lesson introduces route handlers, explains why it's useful, and walks you through setting up route handlers.
 
@@ -26,80 +26,56 @@ app.get('/', (req, res) => {
 
 ## 🔍 How to use?
 
-## Get a home page
+### To get a home page
 ```js
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 ```
-## Get a about page
+### To get a about page
 ```js
 app.get('/about', (req, res) => {
     res.send('About Page')
 })
 ```
+### To get a contact page
+```js
+app.get('/contact', (req, res) => {
+    res.send('Contact Page')
+})
+```
 
+## 📝 How to implement
 
-## 🧰 Prerequisites
-
-Before you begin, make sure you have:
-
-- [Node.js](https://nodejs.org/) installed (v14+)
-- A code editor like [VS Code](https://code.visualstudio.com/)
-- Basic to intermediate level knowledge of JavaScript
-- es6 knowledge will be an added advantage
-
----
-
-## 📦 Step 1: Initialize the Project with a start script
-
-1. Create a project folder and open it in your code editor (VS Code).
-2. command `npm init -y` to initialize the project with package.json.
-    2.1 we can also use `npm init` for interactive mode where you can answer questions about your project.
-    2.2 `npm init -y` is a shortcut for `npm init --yes` where you can skip the interactive mode.
-3. Configure the `package.json` file:
-    - Add `"type": "module"` to the `package.json` object. (for ES6)
-    - Add a script to start the server:
-        ```json
-        "scripts": {
-            "start": "nodemon index.js"     // where index.js is your server file
-        }
-        ```
-
-## 📦 Step 2: Install Express
-
-1. Install Express using `npm install express` or `npm i express`
-
-## 📦 Step 3: Create a Server File
-
-1. Create a file called `index.js` in the root directory of your project.
-2. Add the following code to the `index.js` file:
+1. Directly in the `index.js` file (main file)
     ```
-    import express from 'express';
+    import express from "express";
     const app = express();
 
     app.get('/', (req, res) => {
         res.send('Hello World!');
     });
 
+    app.get('/about', (req, res) => {
+        res.send('About Page');
+    });
+
+    app.get('/contact', (req, res) => {
+        res.send('Contact Page');
+    });
+
     app.listen(3000, () => {
-        console.log('Server started on port 3000');
-    })
+        console.log('Server is running on port 3000');
+    });
     ```
-    - The `import express from 'express';` statement imports the Express module and assigns it to the `express` variable.
-    - The `const app = express();` statement creates an instance of the Express application and assigns it to the `app` variable.
-    - The `app.get('/', (req, res) => {...}` statement defines a route for the root URL ('/'). When a request is made to the root URL, the callback function is executed.
-    - The `res.send('Hello World!');` statement sends a response with the text 'Hello World!' to the client.
-    - The `app.listen(3000, () => {...}` statement starts the server on port 3000 and logs a message to the console when the server starts.
+2. In a separate file (separate file as a module) - refer next lesson_02
 
-## 📦 Step 4: Test the created server
+## 🎉 Next lesson
+[Lesson 02 - Routing Module](https://github.com/cmabdulkareem/ExpressJS_Tutorial/tree/lesson_02)
 
-1. Run the server using `npm run start` // it came from `package.json`
-2. Test the server by:
-    - Open your browser and navigate to `http://localhost:3000`
-    - You should see the message 'Hello World!' in the browser.
-    - We can also install vscode RESTClient extension and use it to test our API.
-    - After installing the extension, create a request file `request.http` and use it to test our API.
-        ```
-        GET http://localhost:3000
-        ```
+## Checking each route handler
+
+1. Run the server (in not running) `npm run start`
+2. Open a browser and type `http://localhost:3000/` or `http://localhost:3000/about` or `http://localhost:3000/contact`
+    - We can also initiate GET request from a RESTClient script (Refer file request.http)
+    - We should see `Hello World!` or `About Page` or `Contact Page`

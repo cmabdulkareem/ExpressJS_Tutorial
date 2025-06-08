@@ -1,7 +1,7 @@
 {
-  "name": "expressjs_tutorial",
+  "name": "emart",
   "version": "1.0.0",
-  "description": "Welcome to the introduction session in our **Express.js tutorial series**. This lesson introduces Express, explains why it's useful, and walks you through setting up your first Express server.",
+  "description": "Welcome to the Lesson 01 session in our **Express.js tutorial series**. This lesson introduces route handlers, explains why it's useful, and walks you through setting up route handlers.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
