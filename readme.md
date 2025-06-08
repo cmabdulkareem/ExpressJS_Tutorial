@@ -1,54 +1,65 @@
-# Lesson 02 - Route Handlers (using routing modules)
+# Lesson 03 - Middlewares
 
-Welcome to the Lesson 02 session in our **Express.js tutorial series**. This lesson introduces routing module, explains why it's useful, and walks you through setting up routing module.
+Welcome to the Lesson 03 session in our **Express.js tutorial series**. This lesson introduces middlewares, explains why it's useful, and walks you through setting up middlewares.
 
 ---
 
-## 🚀 What is Routing module?
+## 🚀 What is Middlewares?
 
-In Express, a routing module is a collection of route handlers that are used to handle different HTTP requests. It's a way to group related routes together and manage their behavior.
+In Express, a middleware is a function that is executed between the request and the response.
+- It can be used to perform tasks such as authentication, error handling, logging, and more.
+- There are two types of middlewares:
+    - **Global middlewares**: These middlewares are executed for every request.
+    - **Route middlewares**: These middlewares are executed for specific routes.
 
-## 📚 How to create a routing module?
+## 📚 How to create a middleware?
 
-1. Create a folder named `routes` in the root folder.
-2. Create a file named `adminRoutes.js` in the `routes` folder.
-    - `adminRoutes.js` will contain the route handlers for the admin related routes.
-    - we can also create a file named `userRoutes.js` in the `routes` folder for all user related routes.
-3. Writing the route handlers in `adminRoutes.js`
+1. Creating and using a global middleware
 ```
-import express from "express";
-const adminRouter = express.Router();
-
-adminRouter.get('/', (req, res) => {
-    res.send('Admin Home Page');
+app.use((req, res, next) => {
+    console.log('Global Middleware');
+    next(); // Pass control to the next middleware or route handler
 });
-
-adminRouter.get('/about', (req, res) => {
-    res.send('Admin about Page');
-})
-
-adminRouter.get('/contact', (req, res) => {
-    res.send('Admin contact Page');
-})
-
-export default adminRouter;
 ```
-- `adminRouter` is the routing module that's why we are assigning router function to it.
-- This newly created routing module should be imported in `index.js`, then only these route handlers will be accessible.
+- in this example the middleware will be executed for every request and will log a message to the console then pass request to the next middleware or route handler.
+
+2. Creating and using a route middleware
+```
+const isAdmin = false
+app.use('/admin', (req, res, next) => {
+    if (isAdmin) {
+        next(); // Pass control to the next middleware or route handler
+    } else {
+        res.send('You are not authorized to access this page');
+    }
+});
+```
 
 ## 🔍 How to use?
 
-1. Import the routing module in `index.js`
-```
-import adminRouter from "./routes/adminRoutes.js";
-```
-2. Use the routing module in `index.js`
-```
-app.use('/admin', adminRouter);
-```
-3. This will make all the admin route handlers accessible at `/admin/` (refer `index.js`)
+// Refer index.js
 
-## Checking each route handler
+
+## 📝 Setting middlewares as modules?
+
+1. Create a new folder `middlewares` in the root directory of the project.
+2. Create a new file `auth.js` in the `middlewares` folder.
+    - In this file, you can define your middleware functions.
+    ```
+    const isAdmin = false
+    export const authMiddleware = (req, res, next) => {
+        if (isAdmin) {
+            next(); // Pass control to the next middleware or route handler
+        } else {
+            res.send('You are not authorized to access this page');
+        }
+    }
+    ```
+3. Import the middleware module in the `index.js` file.
+    - `import {authMiddleware} from "./middlewares/auth.js";`
+5. Use the middleware in the Express app by calling `app.use(authMiddleware)` in the `index.js` file.
+
+## Checking middlewares
 
 1. Run the server (in not running) `npm run start`
 2. Open a browser and type `http://localhost:3000/admin/` or `http://localhost:3000/admin/about` or `http://localhost:3000/admin/contact`
