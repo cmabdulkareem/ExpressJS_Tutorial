@@ -82,3 +82,26 @@ GET http://localhost:3000/admin/products/findProducts/notstartswith/app
 
 ### Not Ends With
 GET http://localhost:3000/admin/products/findProducts/notendswith/ple
+
+
+###
+
+GET http://localhost:3000/
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "john123",
+  "email": "john@mail.com",
+  "password": "123"
+}
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "john123",
+  "password": "123"
+}
