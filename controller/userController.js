@@ -38,6 +38,7 @@ const signInUser = async (req, res) => {
         if (!isCorrectPwd) {
             res.status(401).json({ error: "login failed, incorrect password" })
         }
+        req.session.user = user // store the user in the session object, so that we can use it in other routes
         res.redirect('/')
     } catch (err) {
         res.status(500).json({ error: "internal server error" })

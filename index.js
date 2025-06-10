@@ -1,10 +1,14 @@
 import express from 'express'
+import session from 'express-session'
+import sessionOptions from './config/sessionConfig.js'
 import adminRouter from './routes/adminRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+
 
 import './config/db.js'
 const app = express()
 
+app.use(session(sessionOptions))
 
 app.use(express.urlencoded())
 app.use(express.json())
